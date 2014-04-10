@@ -1,4 +1,5 @@
-app7
-====
+WowVista
+========
 
-APPS PERTAMA DAN TERULUNG DARI KAMI ASAN DAN ZULHATFI.
+> APPS PERTAMA DAN TERULUNG DARI KAMI ASAN DAN ZULHATFI.
+> kenapakah angin bertiup kencang?
