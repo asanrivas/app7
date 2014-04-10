@@ -1,5 +1,4 @@
 app7
 ====
 
-You read nothing here.
-Bye..
+APPS PERTAMA DAN TERULUNG DARI KAMI ASAN DAN ZULHATFI.
