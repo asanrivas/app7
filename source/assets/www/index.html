@@ -19,24 +19,122 @@
 -->
 <html>
     <head>
+      <script>
+              (function() {
+          if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+              var msViewportStyle = document.createElement("style");
+              msViewportStyle.appendChild(
+                  document.createTextNode("@-ms-viewport{width:auto!important}")
+              );
+              document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+          }
+      })();
+      </script>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <script type="text/javascript" charset="utf-8" src="appframework/ui/appframework.ui.js"></script>
-        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-        <title>Learn Malay Pro</title>
-        <script type="text/javascript">
+         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+         <title>Learn Malay Pro</title>
+         <script type="text/javascript" charset="utf-8" src="appframework/appframework.min.js"></script>         
+         <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.actionsheet.js"></script>
+         <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.css3animate.js"></script>
+         <script type="text/javascript" charset="utf-8" src="appframework//plugins/af.passwordBox.js"></script>          
+         <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.scroller.js"></script>
+         <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.selectBox.js"></script>
+         <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.touchEvents.js"></script>
+         <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.touchLayer.js"></script>
+         <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.popup.js"></script>
+
+        
+         <script type="text/javascript" charset="utf-8" src="appframework/ui/appframework.ui.js"></script>
+         <!--<script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
+        
+         <link rel="stylesheet" type="text/css" href="appframework/css/appframework.css"  />
+         <link rel="stylesheet" type="text/css" href="appframework/css/icons.css" /> 
+         <link rel="stylesheet" type="text/css" href="appframework/css/main.css"  />
+         
+         <link rel="stylesheet" type="text/css" href="appframework/css/android.css"  />
+         <link rel="stylesheet" type="text/css" href="appframework/css/win8.css"  />
+         
+         <link rel="stylesheet" type="text/css" href="appframework/css/main.css"  />
+         <link rel="stylesheet" type="text/css" href="appframework/css/appframework.css"  />
+         <link rel="stylesheet" type="text/css" href="appframework/css/lists.css"  />
+         <link rel="stylesheet" type="text/css" href="appframework/css/forms.css"  />
+         <link rel="stylesheet" type="text/css" href="appframework/css/buttons.css"  />        
+         <link rel="stylesheet" type="text/css" href="appframework/css/badges.css"  />        
+         <link rel="stylesheet" type="text/css" href="appframework/css/grid.css"  />
+
+         <script type="text/javascript">
             $(function(){
-               var category = $.parseJSON(category);
+               //$.feat.nativeTouchScroll=true;
+               $.jsonP({url:"http://urls.api.twitter.com/1/urls/count.json?url=www.pp-brokerage.de", 
+                  success:function(data){
+                  alert("success");
+                     $.each( data.items, function( i, item ) {
+                        $('#categorylist').append('<li class="red"><a href="#af" id="aflink" class="icon home big">App Framework</a></li>');
+                       });
+                     }
+                  });
             });
+           var onDeviceReady = function () {
+                intel.xdk.device.setRotateOrientation("portrait");
+                intel.xdk.device.setAutoRotate(false);
+                webRoot = intel.xdk.webRoot + "";
+                //hide splash screen
+                intel.xdk.device.hideSplashScreen();
+                $.ui.blockPageScroll(); //block the page from scrolling at the header/footer
+            };
         </script>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+        <div id="afui">
+            <div id="splashscreen" class='ui-loader heavy'>
+                App Framework
+                <br>
+                <br>    <span class='ui-icon ui-icon-loading spin'></span>
+                <h1>Starting app</h1>
+
+            </div>
+            <div id="header">
+                <a id='menubadge' onclick='af.ui.toggleSideMenu()' class='menuButton'></a>                 
+            </div>
+            <div id="content">
+               <div id="main" class="panel" selected="true" data-load="loadedPanel" data-unload="unloadedPanel" data-tab="navbar_home"title="Learn Malay App">
+                  <h2 class='expanded' onclick='showHide(this,"main_info");'>Welcome</h2>
+                  <p id='main_info'>Welcome to Learn Malay APp.</p>
+                  <ul class="list" id="categorylist">
+                        <li class='red'>
+                            <a href="#af" id='aflink' class='icon home big'>App Framework</a>
+                        </li>
+                        <li class="blue">
+                            <a href="#afuidemo">App Framework UI</a>
+                        </li>
+                        <li>
+                            <a href="index.html" data-ignore="true">App Framework theme</a>
+                        </li>
+                         <li>
+                            <a href="index.html?ios" data-ignore="true">iOS theme</a>
+                        </li>
+                        <li>
+                            <a href="index.html?android" data-ignore="true">Android theme</a>
+                        </li>
+                        <li>
+                            <a href="index.html?win8" data-ignore="true">Win8 theme</a>
+                        </li>
+                        <li>
+                            <a href="index.html?bb" data-ignore="true">BB10 theme</a>
+                        </li>
+                       <li>
+                            <a href="index.html?ios7" data-ignore="true">ios7</a>
+                        </li>
+                         <li>
+                            <a href="index.html?tizen" data-ignore="true">tizen</a>
+                        </li>
+
+                    </ul>
+               </div>
             </div>
         </div>
     </body>

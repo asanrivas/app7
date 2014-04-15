@@ -1,7 +1,26 @@
 {
-  category:[
-    {id:0,name:"Greetings"},
-    {id:1,name:"Transportation"},
-  ],
-  phrases:[]
+    "category": [
+        {
+            "id": 0,
+            "name": "Greetings"
+        },
+        {
+            "id": 1,
+            "name": "Transportation"
+        }
+    ],
+    "phrases": [
+        {
+            "id": 0,
+            "eng": "Welcome",
+            "mly": "Selamat datang",
+            "audio": "01.mp3"
+        },
+        {
+            "id": 0,
+            "eng": "Good morning",
+            "mly": "Selamat pagi",
+            "audio": "01.mp3"
+        }
+    ]
 }
