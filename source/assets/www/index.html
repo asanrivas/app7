@@ -46,6 +46,7 @@
          <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.touchEvents.js"></script>
          <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.touchLayer.js"></script>
          <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.popup.js"></script>
+         <script type="text/javascript" charset="utf-8" src="db.json"></script>
 
         
          <script type="text/javascript" charset="utf-8" src="appframework/ui/appframework.ui.js"></script>
@@ -68,15 +69,23 @@
 
          <script type="text/javascript">
             $(function(){
-               //$.feat.nativeTouchScroll=true;
-               $.jsonP({url:"http://urls.api.twitter.com/1/urls/count.json?url=www.pp-brokerage.de", 
-                  success:function(data){
-                  alert("success");
-                     $.each( data.items, function( i, item ) {
-                        $('#categorylist').append('<li class="red"><a href="#af" id="aflink" class="icon home big">App Framework</a></li>');
-                       });
+               // item is for looping eact category.
+               $.each( data.category, function( i, item ) {
+                  var content = "";
+                  $('#categorylist').append('<li><a href="#cat'+item.id+'" class="icon home big categorybut" data-category="'+item.id+'">'+item.name+'</a></li>');
+                  
+                  // itemj is for looping each phrases.
+                  $.each( data.phrases, function( j, itemj ) {
+                     if(itemj.id==item.id)
+                     {
+                        content += '<li><a href="#" class="phraseitem" data-category="'+itemj.id+'">'+itemj.eng+'</a></li>\n';
                      }
                   });
+                  content = '<ul class="list phrasescontent">'+content+"</ul>";
+                  $.ui.addContentDiv("cat"+item.id,content,item.name);
+                  content = null;
+                });
+
             });
            var onDeviceReady = function () {
                 intel.xdk.device.setRotateOrientation("portrait");
@@ -105,35 +114,16 @@
                   <h2 class='expanded' onclick='showHide(this,"main_info");'>Welcome</h2>
                   <p id='main_info'>Welcome to Learn Malay APp.</p>
                   <ul class="list" id="categorylist">
-                        <li class='red'>
-                            <a href="#af" id='aflink' class='icon home big'>App Framework</a>
-                        </li>
-                        <li class="blue">
-                            <a href="#afuidemo">App Framework UI</a>
-                        </li>
-                        <li>
-                            <a href="index.html" data-ignore="true">App Framework theme</a>
-                        </li>
-                         <li>
-                            <a href="index.html?ios" data-ignore="true">iOS theme</a>
-                        </li>
-                        <li>
-                            <a href="index.html?android" data-ignore="true">Android theme</a>
-                        </li>
-                        <li>
-                            <a href="index.html?win8" data-ignore="true">Win8 theme</a>
-                        </li>
-                        <li>
-                            <a href="index.html?bb" data-ignore="true">BB10 theme</a>
-                        </li>
-                       <li>
-                            <a href="index.html?ios7" data-ignore="true">ios7</a>
-                        </li>
-                         <li>
-                            <a href="index.html?tizen" data-ignore="true">tizen</a>
-                        </li>
+                     <li><a href="#phrases">saya</a></li>
 
-                    </ul>
+                  </ul>
+               </div>
+               <div id="phrases" class="panel" title="Learn Malay App">
+
+                  <ul class="list" id="categorylist">
+
+
+                  </ul>
                </div>
             </div>
         </div>
