@@ -1,5 +1,5 @@
 WowVista
 ========
 
-> APPS PERTAMA DAN TERULUNG DARI KAMI ASAN DAN ZULHATFI.
-> kenapakah angin bertiup kencang?
+APPS PERTAMA DAN TERULUNG DARI KAMI ASAN DAN ZULHATFI.
+Sila fork untuk penambahan.
