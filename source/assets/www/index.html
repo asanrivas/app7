@@ -70,20 +70,27 @@
          <script type="text/javascript">
             $(function(){
                // item is for looping eact category.
-               $.each( data.category, function( i, item ) {
+                $.each( data.category, function( i, item ) {
                   var content = "";
                   $('#categorylist').append('<li><a href="#cat'+item.id+'" class="icon home big categorybut" data-category="'+item.id+'">'+item.name+'</a></li>');
                   
                   // itemj is for looping each phrases.
                   $.each( data.phrases, function( j, itemj ) {
-                     if(itemj.id==item.id)
+                     if(itemj.cid==item.id)
                      {
-                        content += '<li><a href="#" class="phraseitem" data-category="'+itemj.id+'">'+itemj.eng+'</a></li>\n';
+                        content += '<li><a href="javascript:;" class="phraseitem" data-category="'+itemj.cid+'"><h4>'+itemj.eng+'</h4></a>'+
+                        '<audio id="audiotag'+itemj.id+'" class="audiotag" src="audio/'+itemj.audio+'" preload="auto"></audio>'+
+                        '<p class="mly">'+itemj.mly+'</p>'+
+                        '</li>\n';
                      }
                   });
                   content = '<ul class="list phrasescontent">'+content+"</ul>";
                   $.ui.addContentDiv("cat"+item.id,content,item.name);
                   content = null;
+                });
+
+                $(".phrasescontent li").click(function(){
+                  document.getElementById($(this).children("audio").attr('id')).play()
                 });
 
             });

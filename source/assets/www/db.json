@@ -12,15 +12,17 @@ var data = {
     "phrases": [
         {
             "id": 0,
+            "cid": 0,
             "eng": "Welcome",
             "mly": "Selamat datang",
-            "audio": "01.mp3"
+            "audio": "01datang.m4a"
         },
         {
-            "id": 0,
+            "id": 1,
+            "cid": 0,
             "eng": "Good morning",
             "mly": "Selamat pagi",
-            "audio": "01.mp3"
+            "audio": "02pagi.mp3"
         }
     ]
 }
